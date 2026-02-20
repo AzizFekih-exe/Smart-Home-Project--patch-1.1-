@@ -10,16 +10,6 @@ public class Thermostat extends SmartDevice implements EnergyConsumer {
         this.temperature = temperature;
     }
 
-    @Override
-    public void turnOn() {
-        setOn(true);
-    }
-
-    @Override
-    public void turnOff() {
-        setOn(false);
-    }
-
     public double getTemperature() {
         return temperature;
     }

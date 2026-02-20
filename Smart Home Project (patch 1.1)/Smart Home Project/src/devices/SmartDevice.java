@@ -34,8 +34,12 @@ public abstract class SmartDevice implements Controllable {
     }
 
     @Override
-    public abstract void turnOn();
+    public void turnOn() {
+        this.on = true;
+    }
 
     @Override
-    public abstract void turnOff();
+    public void turnOff() {
+        this.on = false;
+    }
 }

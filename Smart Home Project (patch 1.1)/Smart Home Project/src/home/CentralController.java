@@ -15,18 +15,25 @@ public class CentralController {
 
     // Show devices + energy if available
     public void listAllDevices() {
-        System.out.println("Devices in " + home.getName() + ":");
+        System.out.println("\n--- Current Home Status ---");
+        System.out.println("Home: " + home.getName());
         for (Room room : home.getRooms()) {
-            System.out.println("- Room: " + room.getName());
+            System.out.println("Room: " + room.getName());
+            if (room.getDevices().isEmpty()) {
+                System.out.println("  (no devices)");
+            }
             for (SmartDevice device : room.getDevices()) {
-                String base = "   • " + device.getId() + " - "
-                        + device.getName() + " - " + device.getStatus();
+                StringBuilder sb = new StringBuilder();
+                sb.append(String.format("  [%-4s] %-15s | Status: %-15s",
+                        device.getId(), device.getName(), device.getStatus()));
+
                 if (device instanceof EnergyConsumer ec) {
-                    base += String.format(" | Power: %.1f W", ec.getCurrentPowerUsage());
+                    sb.append(String.format(" | Power: %6.1f W", ec.getCurrentPowerUsage()));
                 }
-                System.out.println(base);
+                System.out.println(sb.toString());
             }
         }
+        System.out.println("---------------------------\n");
     }
 
     // Heating rule for a single room
@@ -53,7 +60,8 @@ public class CentralController {
         }
     }
 
-    // Motion rule for a single room: lights ON if any sensor has motion, OFF otherwise
+    // Motion rule for a single room: lights ON if any sensor has motion, OFF
+    // otherwise
     public void applyMotionRuleToRoom(String roomName) {
         Room room = home.findRoomByName(roomName);
         if (room == null) {

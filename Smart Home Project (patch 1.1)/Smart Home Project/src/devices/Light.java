@@ -19,16 +19,6 @@ public class Light extends SmartDevice implements EnergyConsumer {
     }
 
     @Override
-    public void turnOn() {
-        setOn(true);
-    }
-
-    @Override
-    public void turnOff() {
-        setOn(false);
-    }
-
-    @Override
     public double getCurrentPowerUsage() {
         // simple model: each percent = 0.5W
         return brightness * 0.5;

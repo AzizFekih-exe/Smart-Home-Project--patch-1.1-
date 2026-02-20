@@ -8,16 +8,6 @@ public class MotionSensor extends SmartDevice {
         // motionDetected is false by default → NO MOTION initially
     }
 
-    @Override
-    public void turnOn() {
-        setOn(true);
-    }
-
-    @Override
-    public void turnOff() {
-        setOn(false);
-    }
-
     public boolean isMotionDetected() {
         return motionDetected;
     }
