@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="smarthome">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Smart Home Project/src/icons/smarthome.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
